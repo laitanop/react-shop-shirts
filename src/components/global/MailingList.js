@@ -1,17 +1,17 @@
-import React from 'react';
+import React from "react";
 
 const MailingList = () => (
   <section className="mailing-list">
     <div className="content">
       <div className="mailing-list-content">
         <h2>
-          Do you <span className="love">love</span> lamp?
+          Do you <span className="love">love</span> Shirts?
         </h2>
         <p>
-          Sign up to recieve{' '}
+          Sign up to recieve{" "}
           <span className="word-mark">
-            I<span className="love">Love</span>Lamp
-          </span>{' '}
+            I<span className="love">Love</span>Shirts
+          </span>{" "}
           product news, promotions and updates.
         </p>
         <form className="newsletter-form" method="post" noValidate>

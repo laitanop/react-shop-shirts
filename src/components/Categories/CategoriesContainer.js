@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import Categories from './Categories';
+import React, { Component } from "react";
+import Categories from "./Categories";
 
 class CategoriesContainer extends Component {
   render() {

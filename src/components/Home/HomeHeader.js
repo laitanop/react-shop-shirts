@@ -1,16 +1,16 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
-import HeaderNav from '../global/HeaderNav';
-import * as Header from '../../assets/img/headers/header.png';
+import HeaderNav from "../global/HeaderNav";
+import * as Header from "../../assets/img/headers/header.svg";
 
 var HeaderStyle = {
   backgroundImage: `url(${Header})`,
-  backgroundRepeat: 'no-repeat',
-  backgroundAttachment: 'scroll',
-  backgroundPosition: 'center',
-  backgroundSize: 'cover',
-  backgroundOrigin: 'border-box'
+  backgroundRepeat: "no-repeat",
+  backgroundAttachment: "scroll",
+  backgroundPosition: "center",
+  backgroundSize: "cover",
+  backgroundOrigin: "border-box"
 };
 
 const HomeHeader = props => (
@@ -19,9 +19,9 @@ const HomeHeader = props => (
 
     <div className="header-container">
       <div className="content">
-        <h1>I love carpet. I love desk.</h1>
+        {/* <h1>I love carpet. I love desk.</h1> */}
         <Link to="/products" className="btn">
-          I love lamp
+          I love shirts
         </Link>
       </div>
     </div>
