@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
-import CheckoutSummary from './CheckoutSummary';
-import { Field, reduxForm } from 'redux-form';
-import * as api from '../../moltin';
-import { push } from 'react-router-redux';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import CheckoutSummary from "./CheckoutSummary";
+import { Field, reduxForm } from "redux-form";
+import * as api from "../../moltin";
+import { push } from "react-router-redux";
+import { connect } from "react-redux";
 
-import { SUBMIT_PAYMENT, PAYMENT_COMPLETE } from '../../ducks/payments';
+import { SUBMIT_PAYMENT, PAYMENT_COMPLETE } from "../../ducks/payments";
 
 function mapStateToProps(state) {
   return { push: state.push };
@@ -13,44 +13,44 @@ function mapStateToProps(state) {
 
 var CheckoutTemplate = {
   customer: {
-    name: 'John Doe',
-    email: 'john@doe.co'
+    name: "John Doe",
+    email: "john@doe.co"
   },
   shipping_address: {
-    first_name: 'John',
-    last_name: 'Doe',
-    line_1: '2nd Floor British India House',
-    line_2: '15 Carliol Square',
-    city: 'Newcastle Upon Tyne',
-    postcode: 'NE1 6UF',
-    county: 'Tyne & Wear',
-    country: 'United Kingdom'
+    first_name: "John",
+    last_name: "Doe",
+    line_1: "2nd Floor British India House",
+    line_2: "15 Carliol Square",
+    city: "Newcastle Upon Tyne",
+    postcode: "NE1 6UF",
+    county: "Tyne & Wear",
+    country: "United Kingdom"
   },
   billing_address: {
-    first_name: 'John',
-    last_name: 'Doe',
-    line_1: '2nd Floor British India House',
-    line_2: '15 Carliol Square',
-    city: 'Newcastle Upon Tyne',
-    postcode: 'NE1 6UF',
-    county: 'Tyne & Wear',
-    country: 'United Kingdom'
+    first_name: "John",
+    last_name: "Doe",
+    line_1: "2nd Floor British India House",
+    line_2: "15 Carliol Square",
+    city: "Newcastle Upon Tyne",
+    postcode: "NE1 6UF",
+    county: "Tyne & Wear",
+    country: "United Kingdom"
   }
 };
 var PaymentTemplate = {
-  gateway: 'stripe',
-  method: 'purchase',
-  first_name: 'John',
-  last_name: 'Doe',
-  number: '4242424242424242',
-  month: '08',
-  year: '2020',
-  verification_value: '123'
+  gateway: "stripe",
+  method: "purchase",
+  first_name: "John",
+  last_name: "Doe",
+  number: "4242424242424242",
+  month: "08",
+  year: "2020",
+  verification_value: "123"
 };
 
 class CheckoutForm extends Component {
   handleKeyDown = function(e) {
-    if (e.key === 'Enter' && e.shiftKey === false) {
+    if (e.key === "Enter" && e.shiftKey === false) {
       e.preventDefault();
     }
   };
@@ -90,7 +90,7 @@ class CheckoutForm extends Component {
       .then(() => {
         this.props.dispatch(dispatch => {
           dispatch({ type: PAYMENT_COMPLETE });
-          dispatch(push('/order-confirmation'));
+          dispatch(push("/order-confirmation"));
         });
       })
 
@@ -108,6 +108,7 @@ class CheckoutForm extends Component {
   };
 
   render() {
+    const { WidgetButton } = window.StablePay;
     return (
       <main role="main" id="container" className="main-container push">
         <section className="checkout">
@@ -119,7 +120,8 @@ class CheckoutForm extends Component {
               onSubmit={this.props.handleSubmit(this.mySubmit)}
               onKeyDown={e => {
                 this.handleKeyDown(e);
-              }}>
+              }}
+            >
               <fieldset className="details">
                 <div className="form-header">
                   <h2>Your details</h2>
@@ -244,7 +246,8 @@ class CheckoutForm extends Component {
                           component="select"
                           id="billing_country"
                           required="required"
-                          name="billing_country">
+                          name="billing_country"
+                        >
                           <option value="">Country</option>
                           <option value="AF">Afghanistan</option>
                           <option value="AX">Åland Islands</option>
@@ -630,7 +633,8 @@ class CheckoutForm extends Component {
                           component="select"
                           id="shipping_country"
                           required="required"
-                          name="shipping_country">
+                          name="shipping_country"
+                        >
                           <option value="">Country</option>
                           <option value="AF">Afghanistan</option>
                           <option value="AX">Åland Islands</option>
@@ -930,9 +934,29 @@ class CheckoutForm extends Component {
               </fieldset>
               <fieldset className="payment collapsed">
                 <div className="form-header inactive">
-                  <h2>Payment details</h2>
+                  <h2>Select payment Method</h2>
                 </div>
                 <div className="form-content">
+                  <div>
+                    <h2 style={{ marginTop: "40px" }}>
+                      Payment gateway with ERC20 tokens{" "}
+                    </h2>
+                    <WidgetButton
+                      {...{
+                        type: "Payment",
+                        source: {
+                          name: "I love shirts",
+                          address: "0x8b59ae6ec3Ef31c796600373a0Add1d91bD1c00e"
+                        },
+                        amount: {
+                          total: "10"
+                        },
+                        callbackURL: "https://stablepay.io/success",
+                        theme: "colored"
+                      }}
+                    />
+                  </div>
+                  <h2 style={{ marginTop: "40px" }}>Payment by credit card </h2>
                   <div className="form-fields">
                     <label className="input-wrap name">
                       <span className="hide-content">Name on card</span>
@@ -963,7 +987,8 @@ class CheckoutForm extends Component {
                         <select
                           id="expiry-month"
                           required="required"
-                          name="expiry-month">
+                          name="expiry-month"
+                        >
                           <option value="01">January</option>
                           <option value="02">February</option>
                           <option value="03">March</option>
@@ -985,7 +1010,8 @@ class CheckoutForm extends Component {
                         <select
                           id="expiry-year"
                           required="required"
-                          name="expiry-year">
+                          name="expiry-year"
+                        >
                           <option value="2017">2017</option>
                           <option value="2018">2018</option>
                           <option value="2019">2019</option>
@@ -1019,7 +1045,8 @@ class CheckoutForm extends Component {
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 52.7 46.9"
-                        aria-hidden="true">
+                        aria-hidden="true"
+                      >
                         <path
                           fill="currentColor"
                           d="M47.8,15.9c0,2.8-1,5.6-3.2,7.6L26.4,41.7L8.1,23.5c-4.3-4.3-4.3-11.1,0-15.4c2.1-2.1,4.9-3.2,7.7-3.2c2.8,0,5.6,1,7.6,3.2
@@ -1040,7 +1067,7 @@ class CheckoutForm extends Component {
 }
 
 CheckoutForm = reduxForm({
-  form: 'CheckoutForm'
+  form: "CheckoutForm"
 })(CheckoutForm);
 
 export default connect(mapStateToProps)(CheckoutForm);

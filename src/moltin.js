@@ -1,6 +1,7 @@
-const MoltinGateway = require('@moltin/sdk').gateway;
+const MoltinGateway = require("@moltin/sdk").gateway;
 
-let client_id = 'j6hSilXRQfxKohTndUuVrErLcSJWP15P347L6Im0M4';
+// let client_id = 'j6hSilXRQfxKohTndUuVrErLcSJWP15P347L6Im0M4';
+let client_id = "2bQH5Jph4WXJkzSCVMetiRafKJWklV5eAS0dwtzLdG";
 
 if (process.env.REACT_APP_MOLTIN_CLIENT_ID) {
   client_id = process.env.REACT_APP_MOLTIN_CLIENT_ID;
@@ -8,19 +9,19 @@ if (process.env.REACT_APP_MOLTIN_CLIENT_ID) {
 
 const Moltin = MoltinGateway({
   client_id,
-  application: 'react-demo-store'
+  application: "react-demo-store"
 });
 
 export const GetProducts = () =>
-  Moltin.Products.With('files, main_images, collections').All();
+  Moltin.Products.With("files, main_images, collections").All();
 
 export const GetProduct = ID => Moltin.Products.Get(ID);
 
-export const GetCategories = () => Moltin.Categories.With('products').All();
+export const GetCategories = () => Moltin.Categories.With("products").All();
 
 export const GetCategory = ID => Moltin.Categories.Get(ID);
 
-export const GetCollections = () => Moltin.Collections.With('products').All();
+export const GetCollections = () => Moltin.Collections.With("products").All();
 
 export const GetBrands = () => Moltin.Brands.All();
 

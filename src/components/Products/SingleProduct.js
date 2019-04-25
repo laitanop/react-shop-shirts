@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import ProductImage from './ProductImage';
-import * as api from '../../moltin';
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import ProductImage from "./ProductImage";
+import * as api from "../../moltin";
 
-import { UPDATE_QUANTITY } from '../../ducks/product';
+import { UPDATE_QUANTITY } from "../../ducks/product";
 import {
   FETCH_CART_START,
   FETCH_CART_END,
   CART_UPDATED
-} from '../../ducks/cart';
+} from "../../ducks/cart";
 
 const mapStateToProps = state => {
   return state;
@@ -51,7 +51,11 @@ class SingleProduct extends Component {
               .GetCartItems()
 
               .then(cart => {
-                dispatch({ type: FETCH_CART_END, payload: cart, gotNew: true });
+                dispatch({
+                  type: FETCH_CART_END,
+                  payload: cart,
+                  gotNew: true
+                });
               });
           })
           .catch(e => {
@@ -67,7 +71,7 @@ class SingleProduct extends Component {
         return (
           <p className="price">
             <span className="hide-content">Unit price </span>
-            {'$' + product.meta.display_price.with_tax.amount / 100}
+            {"$" + product.meta.display_price.with_tax.amount / 100}
           </p>
         );
       } catch (e) {
@@ -90,9 +94,9 @@ class SingleProduct extends Component {
               <div className="product-description">
                 <h2>{product.name}</h2>
                 <p className="manufacturer">
-                  <span className="hide-content">Manufactured </span>By{' '}
+                  <span className="hide-content">Manufactured </span>By{" "}
                   <span className="word-mark">
-                    I<span className="love">Love</span>Lamp
+                    I<span className="love">Love</span>Shirts
                   </span>
                 </p>
                 {isThereACurrencyPrice()}
@@ -112,7 +116,8 @@ class SingleProduct extends Component {
                       className="decrement number-button"
                       onClick={() => {
                         updateQuantity(this.props.product.quantity - 1);
-                      }}>
+                      }}
+                    >
                       <span className="hide-content">Decrement quantity</span>
                       <span aria-hidden="true">-</span>
                     </button>
@@ -133,7 +138,8 @@ class SingleProduct extends Component {
                       className="increment number-button"
                       onClick={() => {
                         updateQuantity(this.props.product.quantity + 1);
-                      }}>
+                      }}
+                    >
                       <span className="hide-content">Increment quantity</span>
                       <span aria-hidden="true">+</span>
                     </button>
@@ -145,7 +151,8 @@ class SingleProduct extends Component {
                       addToCart(product.id);
                       console.log(this.props.product.quantity);
                       e.preventDefault();
-                    }}>
+                    }}
+                  >
                     Add to cart
                   </button>
                 </form>
