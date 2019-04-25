@@ -15,7 +15,7 @@ class ProductsHeader extends Component {
           </nav>
           <div className="logo">
             <Link to="/" className="logo-link">
-              <span className="hide-content">I love lamp</span>
+              <span className="hide-content">I love shirts</span>
               <div className="big-logo" aria-hidden="true">
                 <svg
                   width="562px"

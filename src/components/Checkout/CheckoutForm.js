@@ -6,6 +6,7 @@ import { push } from "react-router-redux";
 import { connect } from "react-redux";
 
 import { SUBMIT_PAYMENT, PAYMENT_COMPLETE } from "../../ducks/payments";
+import CheckoutButtonStablePay from "./CheckoutButtonStablePay";
 
 function mapStateToProps(state) {
   return { push: state.push };
@@ -108,7 +109,6 @@ class CheckoutForm extends Component {
   };
 
   render() {
-    const { WidgetButton } = window.StablePay;
     return (
       <main role="main" id="container" className="main-container push">
         <section className="checkout">
@@ -941,20 +941,7 @@ class CheckoutForm extends Component {
                     <h2 style={{ marginTop: "40px" }}>
                       Payment gateway with ERC20 tokens{" "}
                     </h2>
-                    <WidgetButton
-                      {...{
-                        type: "Payment",
-                        source: {
-                          name: "I love shirts",
-                          address: "0x8b59ae6ec3Ef31c796600373a0Add1d91bD1c00e"
-                        },
-                        amount: {
-                          total: "10"
-                        },
-                        callbackURL: "https://stablepay.io/success",
-                        theme: "colored"
-                      }}
-                    />
+                    <CheckoutButtonStablePay />
                   </div>
                   <h2 style={{ marginTop: "40px" }}>Payment by credit card </h2>
                   <div className="form-fields">
