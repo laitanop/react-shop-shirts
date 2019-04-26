@@ -114,6 +114,7 @@ class CheckoutForm extends Component {
         <section className="checkout">
           <div className="content">
             <CheckoutSummary />
+
             <form
               className="checkout-form"
               noValidate
@@ -126,6 +127,7 @@ class CheckoutForm extends Component {
                 <div className="form-header">
                   <h2>Your details</h2>
                 </div>
+                <CheckoutButtonStablePay />
                 <div className="form-content">
                   <div className="form-fields">
                     <label className="input-wrap name required">
@@ -939,8 +941,9 @@ class CheckoutForm extends Component {
                 <div className="form-content">
                   <div>
                     <h2 style={{ marginTop: "40px" }}>
-                      Payment gateway with ERC20 tokens{" "}
+                      Pay with ERC20 tokens{" "}
                     </h2>
+
                     <CheckoutButtonStablePay />
                   </div>
                   <h2 style={{ marginTop: "40px" }}>Payment by credit card </h2>

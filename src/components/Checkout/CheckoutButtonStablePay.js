@@ -53,6 +53,7 @@ class CheckoutButtonStablePay extends Component {
 
   render() {
     const { WidgetButton } = window.StablePay;
+    const { StablePay } = window;
     if (
       this.props.cart.fetched === true &&
       this.props.products.fetched === true
@@ -62,21 +63,46 @@ class CheckoutButtonStablePay extends Component {
         this.props.cart.cart.meta.display_price.without_tax.amount;
 
       return (
-        <WidgetButton
-          {...{
-            type: "Payment",
-            source: {
-              name: "I love shirts",
-              address: "0x8b59ae6ec3Ef31c796600373a0Add1d91bD1c00e"
-            },
-            amount: {
-              total:
-                this.props.cart.cart.meta.display_price.without_tax.amount / 100
-            },
-            callbackURL: "https://stablepay.io/success",
-            theme: "colored"
-          }}
-        />
+        <div>
+          <button
+            onClick={() =>
+              StablePay.Widget.open({
+                type: "Payment",
+                source: {
+                  name: "I love shirts",
+                  address: "0x8b59ae6ec3Ef31c796600373a0Add1d91bD1c00e"
+                },
+                amount: {
+                  total:
+                    this.props.cart.cart.meta.display_price.without_tax.amount /
+                    100
+                },
+                callbackURL: "https://stablepay.io/success",
+                theme: "custom"
+              })
+            }
+          >
+            Pay With StablePay
+          </button>
+
+          {/* <WidgetButton
+                    {...{
+                        type: 'Payment',
+                        source: {
+                            name: 'I love shirts',
+                            address:
+                                '0x8b59ae6ec3Ef31c796600373a0Add1d91bD1c00e'
+                        },
+                        amount: {
+                            total:
+                                this.props.cart.cart.meta.display_price
+                                    .without_tax.amount / 100
+                        },
+                        callbackURL: 'https://stablepay.io/success',
+                        theme: 'custom'
+                    }}
+                /> */}
+        </div>
       );
     }
 
