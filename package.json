@@ -7,8 +7,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "precommit": "lint-staged",
-    "heroku-postbuild": "npm run build"
+    "precommit": "lint-staged"
   },
   "dependencies": {
     "@moltin/sdk": "^3.18.1",
@@ -22,13 +21,13 @@
     "react-scripts": "1.1.0",
     "redux": "^3.7.1",
     "redux-form": "7.2.3",
-    "redux-thunk": "2.2.0"
+    "redux-thunk": "2.2.0",
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
     "husky": "^0.14.3",
     "lint-staged": "^7.0.0",
-    "prettier": "1.10.2",
-    "redux-logger": "^3.0.6"
+    "prettier": "1.10.2"
   },
   "lint-staged": {
     "*.{js,json,css,md}": ["prettier --write", "git add"]
