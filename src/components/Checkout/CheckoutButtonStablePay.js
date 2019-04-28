@@ -77,7 +77,8 @@ class CheckoutButtonStablePay extends Component {
                     this.props.cart.cart.meta.display_price.without_tax.amount /
                     100
                 },
-                callbackURL: "https://stablepay.io/success",
+                callbackURL:
+                  "https://react-shop-shirts.herokuapp.com/order-confirmation",
                 theme: "custom"
               })
             }
